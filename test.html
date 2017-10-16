@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+</head>
+<body>
+    <div ng-app="app" ng-controller="controller">
+        {{msg}}
+        <div>
+            <ul ng-repeat="user in users">
+                <li>{{user.username}}</li>
+                <li>{{user.fullname}}</li>
+                <li>{{user.password}}</li>
+                <li>{{user.roles}}</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script>
+        app = angular.module('app', []);
+        app.controller('controller', function($scope, $http) {
+            $scope.msg = "Here are your user!";
+            var sql = '/database.js?sql=SELECT * FROM Students';
+            $http({
+                method: "GET",
+                url: sql
+            }).then(function(res) {
+                $scope.users = res.data;
+            }, function(res){
+                alert(res.statusText)
+            } )
+        });
+    </script>
+</body>
+</html>

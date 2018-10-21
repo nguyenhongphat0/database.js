@@ -101,11 +101,16 @@ require_once 'config.php';
         $('#test #query').keyup((event) => {
             if (event.keyCode == 13) {
                 query = event.target.value;
+                target = '#test #result';
+                if (query.trim().toLowerCase() === 'clear') {
+                    $(target).html('');
+                    event.target.value = '';
+                    return;
+                }
                 url = `database.php?sql=${query}`;
                 fetch(url)
                 .then(res => res.text())
                 .then(data => {
-                    target = '#test #result';
                     $(target).append($('<p class="queried">').text(query));
                     jsonView.format(data, target);
                 });

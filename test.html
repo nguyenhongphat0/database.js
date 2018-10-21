@@ -30,10 +30,13 @@
         app.controller('controller', function($scope, $http) {
             const table = 'users';
             $scope.msg = `This is your ${table} table`;
-            var sql = `/database.php?sql=SELECT * FROM ${table}`;
+            var sql = `/database.php`;
             $http({
-                method: "GET",
-                url: sql
+                method: "POST",
+                url: sql,
+                data: {
+                    sql: `SELECT * FROM ${table}`
+                }
             }).then(function(res) {
                 $scope.users = res.data;
                 return res;

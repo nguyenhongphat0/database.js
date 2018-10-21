@@ -21,6 +21,7 @@ table {
     margin-left: 10px;
 }
 table tr th {
+    padding: 5px 10px;
     background-color: #129acd;
 }
 input {
@@ -30,7 +31,7 @@ input {
     height: 100%;
     border: none;
     padding: 5px;
-    background-color: transparent;
+    background-color: #21252b;
 }
 input:hover, input:focus {
     background-color: #0c0c0d;
@@ -65,14 +66,17 @@ input:hover, input:focus {
 #pages {
     margin-left: 200px;
 }
-#databaseinfo table {
+#databaseinfo table, #loginform table {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-#databaseinfo td[colspan="2"] {
+#databaseinfo td[colspan="2"], #loginform td[colspan="2"] {
     text-align: right;
+}
+#loginform td[colspan="2"] button {
+    margin: 5px 0px;
 }
 #phpinfo {
     padding-top: 10px;
